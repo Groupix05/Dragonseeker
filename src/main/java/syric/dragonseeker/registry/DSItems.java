@@ -1,8 +1,7 @@
 package syric.dragonseeker.registry;
 
-import com.github.alexthe666.iceandfire.item.IafItemRegistry;
-import com.github.alexthe666.iceandfire.item.IafTabRegistry;
-import net.minecraft.resources.ResourceKey;
+import com.iafenvoy.iceandfire.registry.IafItemGroups;
+import com.iafenvoy.iceandfire.registry.IafItems;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
@@ -24,29 +23,41 @@ import syric.dragonseeker.item.tool.legendaryDragonseekerItem;
         bus = Mod.EventBusSubscriber.Bus.MOD
 )
 public class DSItems {
-    // create DeferredRegister object
+
     public static final DeferredRegister<Item> ITEMS = DeferredRegister.create(ForgeRegistries.ITEMS, Dragonseeker.MODID);
 
-    public static void init() {
-        // attach DeferredRegister to the event bus
-        ITEMS.register(FMLJavaModLoadingContext.get().getModEventBus());
-    }
-
-    // register item
     public static final RegistryObject<Item> DRAGONSEEKER = ITEMS.register("dragonseeker", dragonseekerItem::new);
     public static final RegistryObject<Item> EPICDRAGONSEEKER = ITEMS.register("epic_dragonseeker", epicDragonseekerItem::new);
     public static final RegistryObject<Item> LEGENDARYDRAGONSEEKER = ITEMS.register("legendary_dragonseeker", legendaryDragonseekerItem::new);
     public static final RegistryObject<Item> GODLYDRAGONSEEKER = ITEMS.register("godly_dragonseeker", godlyDragonseekerItem::new);
 
+    public static void init() {
+        ITEMS.register(FMLJavaModLoadingContext.get().getModEventBus());
+    }
 
     @SubscribeEvent
     public static void buildCreativeModeTabs(BuildCreativeModeTabContentsEvent event) {
-        ResourceKey<CreativeModeTab> tab = event.getTabKey();
-        if (tab == IafTabRegistry.TAB_ITEMS.getKey()) {
-            event.getEntries().putAfter(new ItemStack(IafItemRegistry.DRAGON_STAFF.get()), new ItemStack(DRAGONSEEKER.get()), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
-            event.getEntries().putAfter(new ItemStack(DRAGONSEEKER.get()), new ItemStack(EPICDRAGONSEEKER.get()), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
-            event.getEntries().putAfter(new ItemStack(EPICDRAGONSEEKER.get()), new ItemStack(LEGENDARYDRAGONSEEKER.get()), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
-            event.getEntries().putAfter(new ItemStack(LEGENDARYDRAGONSEEKER.get()), new ItemStack(GODLYDRAGONSEEKER.get()), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
+        if (event.getTabKey() == IafItemGroups.ITEMS.getKey()) {
+            event.getEntries().putAfter(
+                new ItemStack(IafItems.DRAGON_STAFF.get()),
+                new ItemStack(DRAGONSEEKER.get()),
+                CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS
+            );
+            event.getEntries().putAfter(
+                new ItemStack(DRAGONSEEKER.get()),
+                new ItemStack(EPICDRAGONSEEKER.get()),
+                CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS
+            );
+            event.getEntries().putAfter(
+                new ItemStack(EPICDRAGONSEEKER.get()),
+                new ItemStack(LEGENDARYDRAGONSEEKER.get()),
+                CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS
+            );
+            event.getEntries().putAfter(
+                new ItemStack(LEGENDARYDRAGONSEEKER.get()),
+                new ItemStack(GODLYDRAGONSEEKER.get()),
+                CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS
+            );
         }
     }
 }

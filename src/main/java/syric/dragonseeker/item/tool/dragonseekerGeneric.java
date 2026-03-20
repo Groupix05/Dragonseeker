@@ -1,7 +1,6 @@
 package syric.dragonseeker.item.tool;
 
-import com.github.alexthe666.iceandfire.IceAndFire;
-import com.github.alexthe666.iceandfire.entity.EntityDragonBase;
+import com.iafenvoy.iceandfire.entity.EntityDragonBase;
 import net.minecraft.network.chat.Component;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundSource;

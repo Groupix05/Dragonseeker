@@ -102,11 +102,13 @@ repositories {
 dependencies {
     minecraft "net.minecraftforge:forge:${minecraft_version}-${forge_version}"
 
-    //Ice and Fire (requires Citadel)
-    implementation fg.deobf("curse.maven:ice-and-fire-dragons-264231:5037783")
+    //Ice and Fire
+    implementation fg.deobf("curse.maven:iceandfire-ce-1040076:7717259")
 
     //Libraries and Dependencies
-    implementation fg.deobf("curse.maven:citadel-331936:4848887") //For Ice & Fire
+    implementation fg.deobf("curse.maven:jupiter-1072905:7738299") //For Ice & Fire
+    implementation fg.deobf("curse.maven:uranus-1010827:7745532") //For Ice & Fire
+    implementation fg.deobf("curse.maven:architectury-api-419699:5137938")
 
     //JEI etc
     implementation fg.deobf("curse.maven:jei-238222:4712868")

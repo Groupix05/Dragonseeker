@@ -14,29 +14,28 @@ credits = "Ice & Fire was written by Alex-the-666. The textures for the items ar
 authors="${mod_authors}" #optional
 description='''${mod_description}'''
 
-[[dependencies.dragonseeker]] #optional
-    # the modid of the dependency
-    modId="forge" #mandatory
-    # Does this dependency have to exist - if not, ordering below must be specified
-    mandatory=true #mandatory
-    # The version range of the dependency
-    versionRange="${forge_version_range}" #mandatory
-    # An ordering relationship for the dependency - BEFORE or AFTER required if the dependency is not mandatory
-    # BEFORE - This mod is loaded BEFORE the dependency
-    # AFTER - This mod is loaded AFTER the dependency
+[[dependencies.dragonseeker]]
+    modId="forge"
+    mandatory=true
+    versionRange="${forge_version_range}"
     ordering="NONE"
-    # Side this dependency is applied on - BOTH, CLIENT, or SERVER
     side="BOTH"
 [[dependencies.dragonseeker]]
     modId="minecraft"
     mandatory=true
-    # This version range declares a minimum of the current minecraft version up to but not including the next major version
     versionRange="${minecraft_version_range}"
     ordering="NONE"
     side="BOTH"
 [[dependencies.dragonseeker]]
     modId="iceandfire"
     mandatory=true
-    versionRange="[1.19.2-,)"
+    versionRange="[1.2.5,)"
+    ordering="AFTER"
+    side="BOTH"
+
+[[dependencies.dragonseeker]]
+    modId="architectury"
+    mandatory=true
+    versionRange="[9.2.14,)"
     ordering="AFTER"
     side="BOTH"
